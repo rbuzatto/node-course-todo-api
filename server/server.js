@@ -33,6 +33,13 @@ app.post('/users', (req, res) => {
     });
 });
 
+app.get('/todos',(req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos}); //aqui ele envia obj, pq no futuro vc pode inserir outros itens
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
 
 
 app.listen(3000, () => {
